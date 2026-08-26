@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ebenezer Sounds — Professional Sound. Powerful Experiences.</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --black:#08080a;
+  --charcoal:#141210;
+  --charcoal-2:#1c1815;
+  --charcoal-3:#242019;
+  --gold:#c9a24b;
+  --gold-bright:#e6c176;
+  --gold-dim:#8a713a;
+  --champagne:#e8d5a8;
+  --silver:#a3a19b;
+  --warm-white:#f3efe4;
+  --burgundy:#3c1420;
+  --line:rgba(201,162,75,0.16);
+  --line-bright:rgba(201,162,75,0.4);
+  --font-display:'Fraunces', serif;
+  --font-body:'Inter', sans-serif;
+  --font-mono:'JetBrains Mono', monospace;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--black);
+  color:var(--warm-white);
+  font-family:var(--font-body);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+img,svg{display:block;max-width:100%;}
+::selection{background:var(--gold);color:var(--black);}
+:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px;}
+
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--gold);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);display:inline-block;}
+
+.section-label{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(32px,4.5vw,58px);
+  line-height:1.05;
+  letter-spacing:-0.01em;
+}
+.section-label em{
+  font-style:italic;
+  font-weight:500;
+  color:var(--gold-bright);
+}
+.section-pad{padding:120px 8vw;}
+@media(max-width:768px){.section-pad{padding:80px 6vw;}}
+
+.gold-line{width:64px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:22px 0;}
+
+.btn{
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  padding:16px 34px;
+  border-radius:2px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  transition:all .35s cubic-bezier(.2,.8,.2,1);
+  white-space:nowrap;
+}
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold-bright),var(--gold) 55%,var(--gold-dim));
+  color:var(--black);
+  font-weight:600;
+  box-shadow:0 0 0 1px rgba(201,162,75,0.3), 0 12px 30px -10px rgba(201,162,75,0.5);
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(230,193,118,0.6), 0 18px 40px -8px rgba(201,162,75,0.65);}
+.btn-outline{
+  border:1px solid var(--line-bright);
+  color:var(--champagne);
+  background:rgba(255,255,255,0.02);
+}
+.btn-outline:hover{border-color:var(--gold-bright);background:rgba(201,162,75,0.08);transform:translateY(-2px);}
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:.12s;}
+.reveal-delay-2{transition-delay:.24s;}
+.reveal-delay-3{transition-delay:.36s;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+}
+
+/* ===== LOGO MARK ===== */
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-mark{width:36px;height:36px;flex-shrink:0;}
+.logo-text{font-family:var(--font-display);font-weight:700;font-size:17px;letter-spacing:0.06em;color:var(--warm-white);}
+.logo-text span{color:var(--gold-bright);}
+.logo-sub{font-family:var(--font-mono);font-size:8px;letter-spacing:0.24em;color:var(--silver);text-transform:uppercase;display:block;margin-top:1px;}
+
+/* ===== NAV ===== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 8vw;
+  transition:background .4s ease, backdrop-filter .4s ease, padding .4s ease, border-color .4s ease;
+  border-bottom:1px solid transparent;
+}
+header.scrolled{
+  background:rgba(8,8,10,0.86);
+  backdrop-filter:blur(14px) saturate(140%);
+  padding:14px 8vw;
+  border-bottom:1px solid var(--line);
+}
+nav.links{display:flex;gap:36px;}
+nav.links a{
+  font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--silver);position:relative;padding-bottom:4px;transition:color .3s ease;
+}
+nav.links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold-bright);transition:width .3s ease;}
+nav.links a:hover{color:var(--warm-white);}
+nav.links a:hover::after{width:100%;}
+.nav-right{display:flex;align-items:center;gap:22px;}
+.hamburger{display:none;flex-direction:column;gap:5px;width:26px;z-index:1001;}
+.hamburger span{width:100%;height:1.5px;background:var(--gold-bright);transition:all .3s ease;}
+.mobile-menu{
+  position:fixed;inset:0;background:rgba(8,8,10,0.98);backdrop-filter:blur(10px);
+  z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  opacity:0;pointer-events:none;transition:opacity .4s ease;
+}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu a{font-family:var(--font-display);font-size:26px;color:var(--warm-white);}
+@media(max-width:900px){
+  nav.links{display:none;}
+  .nav-right .btn{display:none;}
+  .hamburger{display:flex;}
+}
+
+/* ===== HERO / CONSOLE ===== */
+.hero{
+  position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:120px 6vw 60px;overflow:hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(60,20,32,0.35), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(201,162,75,0.08), transparent 60%),
+    linear-gradient(180deg,#0a0a0c 0%, #08080a 55%, #060606 100%);
+}
+.console-wrap{
+  position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;gap:clamp(4px,1.1vw,14px);
+  padding:0 2vw 0;opacity:0.5;filter:saturate(0.9);pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.55) 20%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,0.35) 85%, transparent 100%);
+  mask-image:linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.55) 20%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,0.35) 85%, transparent 100%);
+}
+.channel{
+  width:clamp(20px,3.2vw,40px);height:76%;display:flex;flex-direction:column;align-items:center;
+  justify-content:flex-end;position:relative;
+}
+.channel .strip-label{font-family:var(--font-mono);font-size:8px;color:var(--gold-dim);letter-spacing:0.05em;margin-bottom:6px;opacity:0.8;}
+.fader-track{
+  width:3px;flex:1;background:linear-gradient(180deg, rgba(201,162,75,0.05), rgba(201,162,75,0.22), rgba(201,162,75,0.05));
+  position:relative;border-radius:2px;margin-bottom:8px;
+}
+.fader-thumb{
+  position:absolute;left:50%;width:15px;height:9px;transform:translateX(-50%);
+  background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));
+  border-radius:2px;box-shadow:0 0 8px rgba(201,162,75,0.55);
+  animation-name:faderMove;animation-timing-function:ease-in-out;animation-iteration-count:infinite;animation-direction:alternate;
+}
+@keyframes faderMove{
+  0%{bottom:8%;}
+  50%{bottom:55%;}
+  100%{bottom:82%;}
+}
+.meter{display:flex;flex-direction:column-reverse;gap:2px;height:26%;width:8px;}
+.led{width:100%;height:3px;border-radius:1px;background:rgba(163,161,155,0.15);animation:ledPulse ease-in-out infinite;}
+.led.g{background:rgba(120,150,90,0.2);}
+.led.gold{background:rgba(201,162,75,0.2);}
+.led.r{background:rgba(120,40,45,0.2);}
+@keyframes ledPulse{
+  0%,100%{opacity:0.25;}
+  50%{opacity:1;}
+}
+.waveform-bg{
+  position:absolute;bottom:0;left:0;width:220%;height:120px;opacity:0.22;
+  animation:waveScroll 26s linear infinite;
+}
+@keyframes waveScroll{from{transform:translateX(0);}to{transform:translateX(-45.45%);}}
+
+.hero-content{position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;max-width:900px;}
+.hero-badge{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--black);background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+  padding:9px 20px;border-radius:20px;margin-bottom:30px;box-shadow:0 8px 24px -6px rgba(201,162,75,0.5);
+}
+.hero-logo{width:clamp(64px,9vw,96px);height:clamp(64px,9vw,96px);margin-bottom:22px;}
+.hero h1{
+  font-family:var(--font-display);font-weight:900;letter-spacing:0.02em;
+  font-size:clamp(44px,9vw,110px);line-height:0.98;
+  background:linear-gradient(180deg,#fbf6ea 10%, var(--champagne) 55%, var(--gold) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero h2{
+  font-family:var(--font-mono);font-weight:500;font-size:clamp(13px,1.6vw,17px);
+  letter-spacing:0.24em;text-transform:uppercase;color:var(--silver);margin-top:22px;
+}
+.hero p{
+  font-family:var(--font-body);font-weight:300;font-size:clamp(15px,1.6vw,19px);
+  color:var(--silver);max-width:620px;margin:26px auto 0;line-height:1.7;
+}
+.hero-ctas{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:44px;}
+.scroll-cue{
+  margin-top:64px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--gold-dim);display:flex;flex-direction:column;align-items:center;gap:10px;
+  animation:bob 2.6s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+@media(max-width:640px){.console-wrap{opacity:0.32;} .channel:nth-child(n+9){display:none;}}
+
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:50px;}}
+.about-text p{font-weight:300;color:var(--silver);line-height:1.85;font-size:16px;margin-top:22px;}
+.about-list{margin-top:30px;display:flex;flex-direction:column;gap:14px;}
+.about-list li{display:flex;align-items:center;gap:14px;font-size:14.5px;color:var(--warm-white);font-weight:300;}
+.about-list .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;box-shadow:0 0 8px var(--gold);}
+.about-visual{
+  position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(201,162,75,0.18), transparent 55%),
+    radial-gradient(circle at 75% 80%, rgba(60,20,32,0.4), transparent 55%),
+    linear-gradient(160deg,#1c1815, #0a0a0c 70%);
+  border:1px solid var(--line);
+}
+.about-visual .rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.about-visual .ring{position:absolute;border:1px solid var(--line-bright);border-radius:50%;animation:ringPulse 4.5s ease-in-out infinite;}
+.about-visual .ring:nth-child(1){width:40%;aspect-ratio:1;animation-delay:0s;}
+.about-visual .ring:nth-child(2){width:65%;aspect-ratio:1;animation-delay:.6s;}
+.about-visual .ring:nth-child(3){width:90%;aspect-ratio:1;animation-delay:1.2s;}
+@keyframes ringPulse{0%,100%{opacity:0.15;transform:scale(1);}50%{opacity:0.5;transform:scale(1.03);}}
+.about-visual .center-mark{width:22%;aspect-ratio:1;position:relative;z-index:2;}
+
+.counters{display:flex;gap:60px;margin-top:44px;}
+.counter{display:flex;flex-direction:column;}
+.counter .num{font-family:var(--font-display);font-weight:700;font-size:clamp(34px,4vw,50px);color:var(--gold-bright);}
+.counter .lbl{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--silver);margin-top:6px;}
+
+/* ===== FOH SECTION ===== */
+.foh-section{
+  background:linear-gradient(180deg,#0a0a0c, #100e0b 40%, #0a0a0c);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;
+}
+.foh-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:center;}
+@media(max-width:960px){.foh-grid{grid-template-columns:1fr;}}
+.foh-visual{
+  position:relative;aspect-ratio:1/1;border-radius:4px;
+  background:radial-gradient(circle at 50% 40%, rgba(201,162,75,0.1), transparent 60%), linear-gradient(160deg,#1c1815,#08080a);
+  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.badge-cert{
+  width:64%;aspect-ratio:1;border-radius:50%;border:1px solid var(--line-bright);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:radial-gradient(circle,rgba(201,162,75,0.07),transparent 70%);
+  animation:slowSpin 40s linear infinite;position:relative;
+}
+.badge-cert::before{
+  content:'';position:absolute;inset:10%;border-radius:50%;border:1px dashed var(--gold-dim);opacity:0.5;
+}
+.badge-cert .inner{animation:counterSpin 40s linear infinite;display:flex;flex-direction:column;gap:6px;align-items:center;}
+@keyframes slowSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes counterSpin{from{transform:rotate(0deg);}to{transform:rotate(-360deg);}}
+.badge-cert .cert-title{font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--gold-bright);letter-spacing:0.03em;}
+.badge-cert .cert-sub{font-family:var(--font-mono);font-size:9px;letter-spacing:0.14em;color:var(--silver);text-transform:uppercase;margin-top:4px;}
+.foh-badges{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;}
+.pill-badge{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;
+  border:1px solid var(--line-bright);padding:9px 16px;border-radius:20px;color:var(--champagne);
+  background:rgba(201,162,75,0.05);
+}
+.foh-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px;}
+.foh-feat{
+  display:flex;align-items:center;gap:12px;font-size:14px;font-weight:300;color:var(--warm-white);
+  padding:14px 16px;border:1px solid var(--line);border-radius:3px;background:rgba(255,255,255,0.015);
+  transition:border-color .3s ease, background .3s ease;
+}
+.foh-feat:hover{border-color:var(--line-bright);background:rgba(201,162,75,0.05);}
+.foh-feat .check{color:var(--gold-bright);font-family:var(--font-mono);font-size:13px;}
+
+/* ===== SERVICES ===== */
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px;}
+@media(max-width:960px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.services-grid{grid-template-columns:1fr;}}
+.service-card{
+  background:var(--charcoal);padding:42px 30px;position:relative;overflow:hidden;
+  transition:background .4s ease;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-bright),transparent);
+  transform:translateX(-100%);transition:transform .5s ease;
+}
+.service-card:hover{background:var(--charcoal-2);}
+.service-card:hover::before{transform:translateX(0);}
+.service-card .icon{width:34px;height:34px;color:var(--gold-bright);margin-bottom:22px;transition:transform .4s ease;}
+.service-card:hover .icon{transform:translateY(-4px) scale(1.05);}
+.service-card h3{font-family:var(--font-display);font-weight:600;font-size:19px;margin-bottom:10px;}
+.service-card p{font-size:13.5px;color:var(--silver);font-weight:300;line-height:1.6;}
+
+/* ===== EQUIPMENT ===== */
+.equipment-section{background:var(--black);}
+.eq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px;}
+@media(max-width:900px){.eq-grid{grid-template-columns:repeat(2,1fr);}}
+.eq-card{
+  aspect-ratio:1/0.85;border:1px solid var(--line);border-radius:3px;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:20px;
+  background:linear-gradient(160deg,#171310,#0a0a0c 75%);
+  transition:border-color .35s ease, transform .35s ease;
+}
+.eq-card:hover{border-color:var(--gold-bright);transform:translateY(-4px);}
+.eq-card .icon{width:26px;height:26px;color:var(--gold-dim);position:absolute;top:18px;left:18px;transition:color .35s ease;}
+.eq-card:hover .icon{color:var(--gold-bright);}
+.eq-card h4{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--champagne);line-height:1.5;}
+.eq-card .idx{position:absolute;top:18px;right:18px;font-family:var(--font-mono);font-size:10px;color:var(--gold-dim);}
+
+/* ===== EXPERIENCE TIMELINE ===== */
+.timeline{display:flex;justify-content:space-between;margin-top:80px;position:relative;}
+.timeline::before{
+  content:'';position:absolute;top:9px;left:0;right:0;height:1px;background:var(--line);
+}
+.timeline-fill{position:absolute;top:9px;left:0;height:1px;background:linear-gradient(90deg,var(--gold),var(--gold-bright));width:0%;transition:width 1.8s cubic-bezier(.2,.8,.2,1);}
+.timeline-fill.in{width:100%;}
+.tl-stage{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;flex:1;padding:0 6px;}
+.tl-dot{width:19px;height:19px;border-radius:50%;background:var(--black);border:2px solid var(--gold-dim);margin-bottom:20px;position:relative;z-index:2;transition:border-color .4s ease, box-shadow .4s ease;}
+.tl-stage.in .tl-dot{border-color:var(--gold-bright);box-shadow:0 0 14px rgba(201,162,75,0.6);}
+.tl-stage span{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--silver);max-width:110px;}
+@media(max-width:768px){
+  .timeline{flex-direction:column;gap:36px;align-items:flex-start;padding-left:10px;}
+  .timeline::before{top:0;bottom:0;left:9px;right:auto;width:1px;height:100%;}
+  .timeline-fill{top:0;left:9px;width:1px;height:0%;}
+  .timeline-fill.in{height:100%;width:1px;}
+  .tl-stage{flex-direction:row;text-align:left;gap:18px;}
+  .tl-dot{margin-bottom:0;}
+}
+
+/* ===== GALLERY ===== */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;}
+@media(max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.gallery-grid{grid-template-columns:1fr;}}
+.gallery-item{
+  aspect-ratio:4/5;position:relative;overflow:hidden;border-radius:3px;border:1px solid var(--line);cursor:pointer;
+}
+.gallery-item .bg{position:absolute;inset:0;transition:transform .7s cubic-bezier(.2,.8,.2,1);}
+.gallery-item:hover .bg{transform:scale(1.08);}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.35) 100%);}
+.gallery-item{transition:border-color .35s ease;}
+.gallery-item:hover{border-color:var(--gold-bright);}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:20px;z-index:2;}
+.gallery-caption .cat{font-family:var(--font-mono);font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-bright);}
+.gallery-caption .name{font-family:var(--font-display);font-size:17px;font-weight:600;margin-top:4px;}
+.gallery-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;opacity:0.35;}
+.gallery-icon svg{width:38%;height:38%;color:var(--gold-bright);}
+
+.lightbox{
+  position:fixed;inset:0;background:rgba(6,6,7,0.94);backdrop-filter:blur(10px);z-index:2000;
+  display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease;padding:6vw;
+}
+.lightbox.open{opacity:1;pointer-events:all;}
+.lightbox-inner{max-width:600px;width:100%;aspect-ratio:4/5;border-radius:4px;border:1px solid var(--line-bright);position:relative;overflow:hidden;}
+.lightbox-close{position:absolute;top:24px;right:6vw;font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;color:var(--gold-bright);border:1px solid var(--line-bright);padding:10px 18px;border-radius:20px;}
+
+/* ===== WHY CHOOSE US ===== */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px;}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.why-grid{grid-template-columns:1fr;}}
+.why-card{background:var(--black);padding:40px 28px;transition:background .35s ease;}
+.why-card:hover{background:var(--charcoal);}
+.why-card .icon{width:30px;height:30px;color:var(--gold-bright);margin-bottom:18px;}
+.why-card h4{font-family:var(--font-display);font-weight:600;font-size:16.5px;margin-bottom:8px;}
+.why-card p{font-size:13px;color:var(--silver);font-weight:300;line-height:1.6;}
+
+/* ===== CTA ===== */
+.cta-section{
+  background:
+    radial-gradient(ellipse 60% 100% at 50% 0%, rgba(201,162,75,0.12), transparent 60%),
+    linear-gradient(180deg,#0a0806,#000);
+  text-align:center;border-top:1px solid var(--line);
+}
+.cta-section h2{
+  font-family:var(--font-display);font-weight:800;font-size:clamp(30px,5vw,58px);line-height:1.08;
+  max-width:900px;margin:0 auto;
+  background:linear-gradient(180deg,#fbf6ea, var(--champagne));-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.cta-section p{color:var(--silver);font-weight:300;font-size:16px;margin:24px auto 0;max-width:520px;}
+.cta-btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:42px;}
+
+/* ===== CONTACT ===== */
+.contact-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:70px;}
+@media(max-width:960px){.contact-grid{grid-template-columns:1fr;gap:50px;}}
+.contact-info{display:flex;flex-direction:column;gap:26px;}
+.contact-row{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);}
+.contact-row .icon{width:22px;height:22px;color:var(--gold-bright);flex-shrink:0;}
+.contact-row .lbl{font-family:var(--font-mono);font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--silver);}
+.contact-row .val{font-size:16px;font-weight:400;margin-top:3px;}
+.contact-row a.val:hover{color:var(--gold-bright);}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:560px){.form-grid{grid-template-columns:1fr;}}
+.field{display:flex;flex-direction:column;gap:8px;}
+.field.full{grid-column:1/-1;}
+.field label{font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--silver);}
+.field input,.field select,.field textarea{
+  background:rgba(255,255,255,0.02);border:1px solid var(--line);border-radius:2px;padding:14px 16px;
+  color:var(--warm-white);font-family:var(--font-body);font-size:14.5px;transition:border-color .3s ease, background .3s ease;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold-bright);background:rgba(201,162,75,0.04);}
+.field textarea{resize:vertical;min-height:100px;}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23c9a24b' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
+.field select option{background:var(--charcoal);}
+.form-note{font-size:11.5px;color:var(--silver);margin-top:16px;font-weight:300;}
+.form-note a{color:var(--gold-bright);}
+
+/* ===== FLOATING BUTTONS ===== */
+.floating{position:fixed;bottom:26px;right:26px;z-index:900;display:flex;flex-direction:column;gap:14px;}
+.float-btn{
+  width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--gold-bright),var(--gold-dim));color:var(--black);
+  box-shadow:0 8px 22px -6px rgba(201,162,75,0.55);position:relative;transition:transform .3s ease;
+}
+.float-btn svg{width:22px;height:22px;}
+.float-btn:hover{transform:scale(1.1);}
+.float-btn .tooltip{
+  position:absolute;right:64px;top:50%;transform:translateY(-50%) translateX(6px);
+  background:var(--charcoal);border:1px solid var(--line-bright);padding:7px 14px;border-radius:3px;
+  font-family:var(--font-mono);font-size:11px;white-space:nowrap;opacity:0;pointer-events:none;transition:all .25s ease;
+}
+.float-btn:hover .tooltip{opacity:1;transform:translateY(-50%) translateX(0);}
+@media(max-width:640px){.float-btn{width:58px;height:58px;} .float-btn .tooltip{display:none;}}
+
+/* ===== FOOTER ===== */
+footer{background:#050505;border-top:1px solid var(--line);padding:70px 8vw 34px;}
+.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:50px;padding-bottom:50px;border-bottom:1px solid var(--line);}
+.footer-tagline{color:var(--silver);font-weight:300;font-size:14px;margin-top:14px;max-width:280px;}
+.footer-links{display:flex;gap:60px;flex-wrap:wrap;}
+.footer-col h5{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:16px;}
+.footer-col a{display:block;font-size:14px;color:var(--silver);margin-bottom:11px;transition:color .3s ease;}
+.footer-col a:hover{color:var(--gold-bright);}
+.footer-social{display:flex;gap:12px;}
+.footer-social a{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color .3s ease;}
+.footer-social a:hover{border-color:var(--gold-bright);}
+.footer-social svg{width:16px;height:16px;color:var(--gold-bright);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:14px;}
+.footer-bottom p{font-family:var(--font-mono);font-size:11px;color:var(--silver);}
+
+.section-head{max-width:640px;}
+.section-head.center{margin:0 auto;text-align:center;}
+
+/* ===== RESPONSIVE / CROSS-BROWSER FIXES ===== */
+html {
+  scroll-padding-top: 88px;
+}
+
+body {
+  min-width: 320px;
+}
+
+section[id] {
+  scroll-margin-top: 88px;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn {
+  min-height: 48px;
+  touch-action: manipulation;
+}
+
+@media (max-width: 1100px) {
+  header {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  header.scrolled {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  nav.links {
+    gap: 20px;
+  }
+
+  nav.links a {
+    font-size: 10px;
+  }
+
+  .section-pad {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  footer {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}
+
+@media (max-width: 900px) {
+  header,
+  header.scrolled {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .logo {
+    min-width: 0;
+  }
+
+  .logo-text {
+    font-size: 14px;
+  }
+
+  .logo-sub {
+    font-size: 7px;
+  }
+
+  .hero {
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding-top: 105px;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .hero h2 {
+    letter-spacing: 0.16em;
+  }
+
+  .counters {
+    gap: 32px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+  }
+
+  .footer-links {
+    gap: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 74px;
+  }
+
+  section[id] {
+    scroll-margin-top: 74px;
+  }
+
+  header,
+  header.scrolled {
+    padding: 12px 5vw;
+  }
+
+  .logo {
+    gap: 8px;
+  }
+
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo-text {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .logo-sub {
+    font-size: 6px;
+    letter-spacing: 0.16em;
+  }
+
+  .hero {
+    padding: 100px 5vw 40px;
+  }
+
+  .hero-badge {
+    max-width: 92vw;
+    padding: 8px 14px;
+    font-size: 9px;
+    letter-spacing: 0.13em;
+    margin-bottom: 22px;
+  }
+
+  .hero-logo {
+    width: 68px;
+    height: 68px;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 12vw, 62px);
+    line-height: 0.98;
+  }
+
+  .hero h2 {
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 0.12em;
+    margin-top: 18px;
+  }
+
+  .hero p {
+    font-size: 14px;
+    line-height: 1.65;
+    margin-top: 20px;
+  }
+
+  .hero-ctas,
+  .cta-btns {
+    width: 100%;
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .hero-ctas .btn,
+  .cta-btns .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .scroll-cue {
+    margin-top: 38px;
+  }
+
+  .section-pad {
+    padding: 68px 5vw;
+  }
+
+  .section-label {
+    font-size: clamp(30px, 9vw, 44px);
+  }
+
+  .about-text p,
+  .contact-row .val {
+    font-size: 14px;
+  }
+
+  .about-visual {
+    aspect-ratio: 1 / 1;
+  }
+
+  .counters {
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .counter .num {
+    font-size: 38px;
+  }
+
+  .counter .lbl {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+
+  .foh-features {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .foh-feat {
+    min-height: 48px;
+  }
+
+  .timeline {
+    margin-top: 52px;
+  }
+
+  .gallery-item {
+    aspect-ratio: 4 / 3;
+  }
+
+  .lightbox {
+    padding: 18px;
+  }
+
+  .lightbox-inner {
+    max-width: none;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+  }
+
+  .lightbox-close {
+    top: max(12px, env(safe-area-inset-top));
+    right: 18px;
+    padding: 9px 14px;
+  }
+
+  .floating {
+    right: 14px;
+    bottom: max(14px, env(safe-area-inset-bottom));
+    gap: 10px;
+  }
+
+  .float-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  footer {
+    padding: 54px 5vw 28px;
+  }
+
+  .footer-links {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+  }
+
+  .footer-bottom p {
+    font-size: 9px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 380px) {
+  .logo-text {
+    font-size: 10px;
+  }
+
+  .logo-sub {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 35px;
+  }
+
+  .hero-badge {
+    font-size: 8px;
+  }
+}
+
+@supports (padding: max(0px)) {
+  header {
+    padding-left: max(5vw, env(safe-area-inset-left));
+    padding-right: max(5vw, env(safe-area-inset-right));
+  }
+
+  .section-pad,
+  footer {
+    padding-left: max(5vw, env(safe-area-inset-left));
+    padding-right: max(5vw, env(safe-area-inset-right));
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="siteHeader">
+  <div class="logo">
+    <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="19" stroke="#c9a24b" stroke-width="1"/>
+      <line x1="14" y1="10" x2="14" y2="30" stroke="#c9a24b" stroke-width="1"/>
+      <rect x="10.5" y="16" width="7" height="4.5" rx="1" fill="#c9a24b"/>
+      <line x1="26" y1="10" x2="26" y2="30" stroke="#e6c176" stroke-width="1"/>
+      <rect x="22.5" y="22" width="7" height="4.5" rx="1" fill="#e6c176"/>
+      <path d="M14 20 L20 14 L26 20" stroke="#8a713a" stroke-width="0.8" fill="none" opacity="0.6"/>
+    </svg>
+    <div>
+      <span class="logo-text">EBENEZER <span>SOUNDS</span></span>
+      <span class="logo-sub">Sound Engineering Co.</span>
+    </div>
+  </div>
+  <nav class="links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#foh">FOH Engineering</a>
+    <a href="#equipment">Equipment</a>
+    <a href="#experience">Experience</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-right">
+    <a href="tel:6300018441" class="btn btn-gold">Call Now</a>
+    <div class="hamburger" id="hamburger" role="button" aria-label="Open menu" aria-expanded="false" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#foh">FOH Engineering</a>
+  <a href="#equipment">Equipment</a>
+  <a href="#experience">Experience</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#contact">Contact</a>
+  <a href="tel:6300018441" class="btn btn-gold" style="margin-top:10px;">Call Now</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="console-wrap" id="consoleWrap"></div>
+
+  <svg class="waveform-bg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <path d="M0,60 Q15,20 30,60 T60,60 T90,30 T120,60 T150,80 T180,60 T210,20 T240,60 T270,90 T300,60 T330,40 T360,60 T390,60 T420,20 T450,60 T480,80 T510,60 T540,30 T570,60 T600,60" fill="none" stroke="#c9a24b" stroke-width="1.2"/>
+    <path d="M600,60 Q615,20 630,60 T660,60 T690,30 T720,60 T750,80 T780,60 T810,20 T840,60 T870,90 T900,60 T930,40 T960,60 T990,60 T1020,20 T1050,60 T1080,80 T1110,60 T1140,30 T1170,60 T1200,60" fill="none" stroke="#c9a24b" stroke-width="1.2"/>
+  </svg>
+
+  <div class="hero-content">
+    <span class="hero-badge">LIVE SOUND ENGINEER</span>
+    <svg class="hero-logo" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="48" cy="48" r="46" stroke="#c9a24b" stroke-width="1"/>
+      <circle cx="48" cy="48" r="38" stroke="#8a713a" stroke-width="0.6" opacity="0.6"/>
+      <line x1="34" y1="26" x2="34" y2="70" stroke="#c9a24b" stroke-width="1.2"/>
+      <rect x="27" y="38" width="14" height="9" rx="2" fill="#c9a24b"/>
+      <line x1="48" y1="20" x2="48" y2="76" stroke="#e6c176" stroke-width="1.2"/>
+      <rect x="41" y="52" width="14" height="9" rx="2" fill="#e6c176"/>
+      <line x1="62" y1="26" x2="62" y2="70" stroke="#c9a24b" stroke-width="1.2"/>
+      <rect x="55" y="30" width="14" height="9" rx="2" fill="#c9a24b"/>
+      <path d="M30 44 L48 26 L66 44" stroke="#e8d5a8" stroke-width="0.8" fill="none" opacity="0.5"/>
+    </svg>
+    <h1>EBENEZER SOUNDS</h1>
+    <h2>Professional Sound. Powerful Experiences.</h2>
+    <p>Professional live sound, FOH engineering, PA systems and event audio solutions built to make every moment sound extraordinary.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-gold">Book Our Sound</a>
+      <a href="tel:6300018441" class="btn btn-outline">Call Now</a>
+    </div>
+    <a href="#services" class="scroll-cue">
+      <span>Explore Our Services</span>
+      <span>↓</span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="section-pad" id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <span class="eyebrow">About Us</span>
+      <h2 class="section-label" style="margin-top:16px;">About <em>Ebenezer Sounds</em></h2>
+      <p>Ebenezer Sounds provides professional audio and sound engineering solutions for live events, concerts, weddings, corporate events, stage productions and outdoor functions.</p>
+      <p>With <strong style="color:var(--gold-bright);font-weight:600;">2+ years of professional experience</strong>, we bring a disciplined, engineer-first approach to every production — from the first line check to the final cue.</p>
+      <ul class="about-list">
+        <li><span class="dot"></span>Professional sound quality</li>
+        <li><span class="dot"></span>Reliable, well-maintained equipment</li>
+        <li><span class="dot"></span>Clean and balanced mixes</li>
+        <li><span class="dot"></span>Powerful sound reinforcement</li>
+        <li><span class="dot"></span>Professional event setup</li>
+        <li><span class="dot"></span>Experienced FOH operation</li>
+      </ul>
+      <div class="counters">
+        <div class="counter"><span class="num" data-count="2" data-suffix="+">0</span><span class="lbl">Years Experience</span></div>
+        <div class="counter"><span class="num" data-count="100" data-suffix="+">0</span><span class="lbl">Events Supported</span></div>
+      </div>
+    </div>
+    <div class="about-visual reveal reveal-delay-2">
+      <div class="rings">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+        <svg class="center-mark" viewBox="0 0 96 96" fill="none">
+          <line x1="34" y1="26" x2="34" y2="70" stroke="#c9a24b" stroke-width="1.4"/>
+          <rect x="27" y="42" width="14" height="9" rx="2" fill="#c9a24b"/>
+          <line x1="48" y1="20" x2="48" y2="76" stroke="#e6c176" stroke-width="1.4"/>
+          <rect x="41" y="30" width="14" height="9" rx="2" fill="#e6c176"/>
+          <line x1="62" y1="26" x2="62" y2="70" stroke="#c9a24b" stroke-width="1.4"/>
+          <rect x="55" y="56" width="14" height="9" rx="2" fill="#c9a24b"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOH ENGINEERING ================= -->
+<section class="section-pad foh-section" id="foh">
+  <div class="foh-grid">
+    <div class="foh-visual reveal">
+      <div class="badge-cert">
+        <div class="inner">
+          <span class="cert-title">FOH ENGINEER</span>
+          <span class="cert-sub">Live Sound & Mixing</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <span class="eyebrow">FOH Engineering</span>
+      <h2 class="section-label" style="margin-top:16px;">Where every <em>channel</em> matters.</h2>
+      <p style="color:var(--silver);font-weight:300;font-size:16px;line-height:1.8;margin-top:22px;max-width:520px;">Front of House engineering is at the heart of every great live event. Ebenezer Sounds focuses on achieving clarity, balance, punch and consistency across vocals, instruments and the entire sound system.</p>
+      <div class="foh-badges">
+        <span class="pill-badge">FOH Engineer</span>
+        <span class="pill-badge">2+ Years Experience</span>
+      </div>
+      <div class="foh-features">
+        <div class="foh-feat"><span class="check">✓</span>Live Mixing</div>
+        <div class="foh-feat"><span class="check">✓</span>System Tuning</div>
+        <div class="foh-feat"><span class="check">✓</span>Vocal Clarity</div>
+        <div class="foh-feat"><span class="check">✓</span>Instrument Balance</div>
+        <div class="foh-feat"><span class="check">✓</span>Monitor Coordination</div>
+        <div class="foh-feat"><span class="check">✓</span>Gain Structure</div>
+        <div class="foh-feat"><span class="check">✓</span>EQ & Dynamics</div>
+        <div class="foh-feat"><span class="check">✓</span>Real-Time Sound Control</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="section-pad" id="services">
+  <div class="section-head center reveal">
+    <span class="eyebrow" style="justify-content:center;">Services</span>
+    <h2 class="section-label" style="margin-top:16px;">Full-spectrum <em>audio</em> solutions</h2>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M8 15h6l10-8v26l-10-8H8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M27 14a8 8 0 010 12" stroke="currentColor" stroke-width="1.4"/><path d="M31 10a14 14 0 010 20" stroke="currentColor" stroke-width="1.4" opacity="0.6"/></svg>
+      <h3>Live Event Sound</h3>
+      <p>Professional sound reinforcement for live events and performances.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="14" y="6" width="12" height="28" rx="4" stroke="currentColor" stroke-width="1.4"/><circle cx="20" cy="14" r="2.2" fill="currentColor"/><circle cx="20" cy="26" r="2.2" fill="currentColor"/><line x1="20" y1="17" x2="20" y2="23" stroke="currentColor" stroke-width="1.4"/></svg>
+      <h3>FOH Engineering</h3>
+      <p>Professional live mixing and Front of House sound control.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="7" y="10" width="9" height="20" rx="1.5" stroke="currentColor" stroke-width="1.4"/><rect x="24" y="6" width="9" height="24" rx="1.5" stroke="currentColor" stroke-width="1.4"/><circle cx="11.5" cy="15" r="1.5" fill="currentColor"/><circle cx="28.5" cy="11" r="1.5" fill="currentColor"/></svg>
+      <h3>PA System Rental</h3>
+      <p>Professional speakers, subwoofers, amplifiers and microphones.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M5 22 L11 22 L14 12 L18 30 L22 16 L25 22 L35 22" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      <h3>Concert Sound</h3>
+      <p>Complete audio solutions for concerts and stage productions.</p>
+    </div>
+    <div class="service-card reveal">
+      <svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M20 32s-13-7.5-13-16.5A7 7 0 0120 10a7 7 0 0113 5.5C33 24.5 20 32 20 32z" stroke="currentColor" stroke-width="1.4"/></svg>
+      <h3>Wedding Sound</h3>
+      <p>Professional audio systems for weddings and celebrations.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="8" y="16" width="24" height="16" stroke="currentColor" stroke-width="1.4"/><path d="M13 16V9h14v7" stroke="currentColor" stroke-width="1.4"/><line x1="14" y1="22" x2="26" y2="22" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="26" x2="22" y2="26" stroke="currentColor" stroke-width="1.2"/></svg>
+      <h3>Corporate Events</h3>
+      <p>Clear and reliable audio for conferences, launches and corporate functions.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="6" y="8" width="4" height="24" fill="currentColor"/><rect x="12" y="4" width="4" height="32" fill="currentColor"/><rect x="18" y="10" width="4" height="20" fill="currentColor"/><rect x="24" y="2" width="4" height="36" fill="currentColor"/><rect x="30" y="8" width="4" height="24" fill="currentColor"/></svg>
+      <h3>Line Array Systems</h3>
+      <p>Powerful professional systems for large venues and outdoor events.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="8" y="6" width="24" height="28" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M13 15l4 4 8-9" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="13" y1="26" x2="27" y2="26" stroke="currentColor" stroke-width="1.2"/></svg>
+      <h3>Event Sound Setup</h3>
+      <p>Complete setup, soundcheck, operation and event support.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= EQUIPMENT ================= -->
+<section class="section-pad equipment-section" id="equipment">
+  <div class="section-head reveal">
+    <span class="eyebrow">Equipment</span>
+    <h2 class="section-label" style="margin-top:16px;">Built on <em>professional</em> gear</h2>
+  </div>
+  <div class="eq-grid">
+    <div class="eq-card reveal"><span class="idx">01</span><svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="5" y="18" width="30" height="14" rx="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="25" r="3" stroke="currentColor" stroke-width="1.2"/><circle cx="20" cy="25" r="3" stroke="currentColor" stroke-width="1.2"/><circle cx="28" cy="25" r="3" stroke="currentColor" stroke-width="1.2"/><rect x="5" y="10" width="30" height="5" stroke="currentColor" stroke-width="1.2"/></svg><h4>Digital Mixing Consoles</h4></div>
+    <div class="eq-card reveal reveal-delay-1"><span class="idx">02</span><svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="16" y="3" width="8" height="34" rx="1.5" stroke="currentColor" stroke-width="1.2"/><line x1="18" y1="8" x2="22" y2="8" stroke="currentColor" stroke-width="1"/><line x1="18" y1="14" x2="22" y2="14" stroke="currentColor" stroke-width="1"/><line x1="18" y1="20" x2="22" y2="20" stroke="currentColor" stroke-width="1"/><line x1="18" y1="26" x2="22" y2="26" stroke="currentColor" stroke-width="1"/><line x1="18" y1="32" x2="22" y2="32" stroke="currentColor" stroke-width="1"/></svg><h4>Line Array Speakers</h4></div>
+    <div class="eq-card reveal reveal-delay-2"><span class="idx">03</span><svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="9" y="9" width="22" height="22" rx="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="20" cy="20" r="7" stroke="currentColor" stroke-width="1.2"/><circle cx="20" cy="20" r="2" fill="currentColor"/></svg><h4>Subwoofers</h4></div>
+    <div class="eq-card reveal reveal-delay-3"><span class="idx">04</span><svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="6" y="12" width="28" height="16" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M12 20h5l2-5 3 10 2-5h4" stroke="currentColor" stroke-width="1.2" fill="none"/></svg><h4>Power Amplifiers</h4></div>
+    <div class="eq-card reveal"><span class="idx">05</span><svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="16" y="6" width="8" height="14" rx="4" stroke="currentColor" stroke-width="1.3"/><path d="M12 18a8 8 0 0016 0" stroke="currentColor" stroke-width="1.2" fill="none"/><line x1="20" y1="26" x2="20" y2="34" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="34" x2="26" y2="34" stroke="currentColor" stroke-width="1.2"/></svg><h4>Wireless Microphones</h4></div>
+    <div class="eq-card reveal reveal-delay-1"><span class="idx">06</span><svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="20" width="16" height="10" rx="1" stroke="currentColor" stroke-width="1.2" transform="rotate(-8 12 25)"/><circle cx="10" cy="24" r="2.2" stroke="currentColor" stroke-width="1"/><rect x="20" y="16" width="16" height="10" rx="1" stroke="currentColor" stroke-width="1.2" transform="rotate(8 28 21)"/><circle cx="30" cy="20" r="2.2" stroke="currentColor" stroke-width="1"/></svg><h4>Stage Monitors</h4></div>
+    <div class="eq-card reveal reveal-delay-2"><span class="idx">07</span><svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M8 32l6-24h12l6 24" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linejoin="round"/><line x1="12" y1="22" x2="28" y2="22" stroke="currentColor" stroke-width="1.1"/></svg><h4>FOH Systems</h4></div>
+    <div class="eq-card reveal reveal-delay-3"><span class="idx">08</span><svg class="icon" viewBox="0 0 40 40" fill="none"><line x1="6" y1="34" x2="34" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="6" y1="6" x2="34" y2="34" stroke="currentColor" stroke-width="1.2"/><rect x="6" y="6" width="28" height="28" stroke="currentColor" stroke-width="1.2"/></svg><h4>Truss & Event Audio</h4></div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="section-pad" id="experience" style="background:linear-gradient(180deg,#0a0a0c,#0e0c0a);">
+  <div class="section-head center reveal">
+    <span class="eyebrow" style="justify-content:center;">Experience</span>
+    <h2 class="section-label" style="margin-top:16px;">2+ Years of <em>Experience</em></h2>
+    <p style="color:var(--silver);font-weight:300;margin-top:20px;font-size:15.5px;">Built through hands-on experience, live events and professional sound engineering, Ebenezer Sounds brings practical knowledge and attention to detail to every production.</p>
+  </div>
+  <div class="timeline" id="timeline">
+    <div class="timeline-fill" id="timelineFill"></div>
+    <div class="tl-stage"><div class="tl-dot"></div><span>Experience</span></div>
+    <div class="tl-stage"><div class="tl-dot"></div><span>Sound Setup</span></div>
+    <div class="tl-stage"><div class="tl-dot"></div><span>FOH Mixing</span></div>
+    <div class="tl-stage"><div class="tl-dot"></div><span>System Management</span></div>
+    <div class="tl-stage"><div class="tl-dot"></div><span>Event Support</span></div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="section-pad" id="gallery">
+  <div class="section-head center reveal">
+    <span class="eyebrow" style="justify-content:center;">Gallery</span>
+    <h2 class="section-label" style="margin-top:16px;">Moments in <em>sound</em></h2>
+  </div>
+  <div class="gallery-grid" id="galleryGrid">
+    <!-- items injected by JS -->
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery preview">
+  <button class="lightbox-close" id="lightboxClose">CLOSE ✕</button>
+  <div class="lightbox-inner" id="lightboxInner"></div>
+</div>
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="section-pad" id="why" style="background:#0a0a0c;">
+  <div class="section-head center reveal">
+    <span class="eyebrow" style="justify-content:center;">Why Ebenezer Sounds</span>
+    <h2 class="section-label" style="margin-top:16px;">Engineered for <em>excellence</em></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal"><svg class="icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="15" stroke="currentColor" stroke-width="1.3"/><path d="M20 12v8l6 4" stroke="currentColor" stroke-width="1.3"/></svg><h4>2+ Years Experience</h4><p>A track record built on real events, not theory.</p></div>
+    <div class="why-card reveal reveal-delay-1"><svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="15" y="6" width="10" height="18" rx="5" stroke="currentColor" stroke-width="1.3"/><path d="M11 18a9 9 0 0018 0" stroke="currentColor" stroke-width="1.2" fill="none"/><line x1="20" y1="27" x2="20" y2="34" stroke="currentColor" stroke-width="1.2"/></svg><h4>Professional FOH Engineering</h4><p>Clarity, balance and control across every channel.</p></div>
+    <div class="why-card reveal reveal-delay-2"><svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="10" y="4" width="4" height="32" fill="currentColor"/><rect x="18" y="12" width="4" height="24" fill="currentColor"/><rect x="26" y="8" width="4" height="28" fill="currentColor"/></svg><h4>Powerful Sound Systems</h4><p>Line array and PA systems built for scale and punch.</p></div>
+    <div class="why-card reveal"><svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M20 5l4 9 10 1-7.5 7 2 10L20 27l-8.5 5 2-10L6 15l10-1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><h4>Reliable Event Support</h4><p>On-site, on-time, and ready before doors open.</p></div>
+    <div class="why-card reveal reveal-delay-1"><svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="7" y="7" width="26" height="26" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M13 20l5 5 9-11" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><h4>Quality Audio Equipment</h4><p>Well-maintained, industry-grade gear for every stage.</p></div>
+    <div class="why-card reveal reveal-delay-2"><svg class="icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="4" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="20" r="2.5" stroke="currentColor" stroke-width="1.1"/><circle cx="32" cy="20" r="2.5" stroke="currentColor" stroke-width="1.1"/><line x1="12" y1="20" x2="16" y2="20" stroke="currentColor" stroke-width="1.1"/><line x1="24" y1="20" x2="28" y2="20" stroke="currentColor" stroke-width="1.1"/></svg><h4>Professional Sound Management</h4><p>Full coordination from load-in to final load-out.</p></div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="section-pad cta-section">
+  <h2 class="reveal">Ready to make your event sound extraordinary?</h2>
+  <p class="reveal reveal-delay-1">Let's create a powerful, clear and unforgettable sound experience for your next event.</p>
+  <div class="cta-btns reveal reveal-delay-2">
+    <a href="tel:6300018441" class="btn btn-gold">Call Now</a>
+    <a href="https://wa.me/916300018441" target="_blank" rel="noopener" class="btn btn-outline">WhatsApp Us</a>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section-pad" id="contact">
+  <div class="section-head reveal">
+    <span class="eyebrow">Get In Touch</span>
+    <h2 class="section-label" style="margin-top:16px;">Let's talk <em>sound</em></h2>
+  </div>
+  <div class="contact-grid" style="margin-top:56px;">
+    <div class="contact-info reveal">
+      <div class="contact-row">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.9.6 2.8a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.8.6a2 2 0 011.8 2z" stroke="currentColor" stroke-width="1.4"/></svg>
+        <div><span class="lbl">Mobile</span><br><a class="val" href="tel:6300018441">6300018441</a></div>
+      </div>
+      <div class="contact-row">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M17 2H7a3 3 0 00-3 3v14a3 3 0 003 3h10a3 3 0 003-3V5a3 3 0 00-3-3z" stroke="currentColor" stroke-width="1.4"/><path d="M12 18h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <div><span class="lbl">WhatsApp</span><br><a class="val" href="https://wa.me/916300018441" target="_blank" rel="noopener">Message Us</a></div>
+      </div>
+      <div class="contact-row">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        <div><span class="lbl">Instagram</span><br><a class="val" href="https://www.instagram.com/ebenezer_sounds?igsi=enNxdnd3Z2c4emt4&utm_source=qr" target="_blank" rel="noopener">@ebenezer_sounds</a></div>
+      </div>
+    </div>
+
+    <form class="reveal reveal-delay-2" id="enquiryForm">
+      <div class="form-grid">
+        <div class="field"><label for="f-name">Name</label><input id="f-name" required type="text" placeholder="Your full name"></div>
+        <div class="field"><label for="f-mobile">Mobile Number</label><input id="f-mobile" required type="tel" placeholder="Your mobile number"></div>
+        <div class="field">
+          <label for="f-type">Event Type</label>
+          <select id="f-type">
+            <option>Live Event</option><option>Wedding</option><option>Concert</option>
+            <option>Corporate Event</option><option>Stage Production</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-date">Event Date</label><input id="f-date" type="date"></div>
+        <div class="field full"><label for="f-location">Location</label><input id="f-location" type="text" placeholder="Venue / city"></div>
+        <div class="field full"><label for="f-msg">Message</label><textarea id="f-msg" placeholder="Tell us about your event..."></textarea></div>
+      </div>
+      <button type="submit" class="btn btn-gold" style="margin-top:26px;width:100%;justify-content:center;">Send Enquiry</button>
+      <p class="form-note">Sending an enquiry opens a pre-filled message on <a href="https://wa.me/916300018441" target="_blank" rel="noopener">WhatsApp</a> to +91 63000 18441.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FLOATING BUTTONS ================= -->
+<div class="floating">
+  <a href="tel:6300018441" class="float-btn" aria-label="Call Ebenezer Sounds">
+    <span class="tooltip">Call Now</span>
+    <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.9.6 2.8a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.8.6a2 2 0 011.8 2z" fill="currentColor"/></svg>
+  </a>
+  <a href="https://wa.me/916300018441" target="_blank" rel="noopener" class="float-btn" aria-label="WhatsApp Ebenezer Sounds">
+    <span class="tooltip">WhatsApp</span>
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2z" fill="currentColor"/><path d="M8.5 8.3c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.7 1.7.7 1.9.1.1.1.3 0 .4-.1.2-.2.3-.3.4l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.7.8c.2.1.4.2.4.4 0 .2 0 1-.4 1.4-.4.4-1.2.9-2.2.7-1-.1-3.2-.9-4.9-2.8-1.8-2-2.4-3.7-2.5-4.1-.1-.4-.6-1.2-.6-2 0-.5.2-.9.4-1.1z" fill="#08080a"/></svg>
+  </a>
+  <a href="https://www.instagram.com/ebenezer_sounds?igsi=enNxdnd3Z2c4emt4&utm_source=qr" target="_blank" rel="noopener" class="float-btn" aria-label="Ebenezer Sounds Instagram">
+    <span class="tooltip">Instagram</span>
+    <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+  </a>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="logo">
+        <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="#c9a24b" stroke-width="1"/><line x1="14" y1="10" x2="14" y2="30" stroke="#c9a24b" stroke-width="1"/><rect x="10.5" y="16" width="7" height="4.5" rx="1" fill="#c9a24b"/><line x1="26" y1="10" x2="26" y2="30" stroke="#e6c176" stroke-width="1"/><rect x="22.5" y="22" width="7" height="4.5" rx="1" fill="#e6c176"/></svg>
+        <span class="logo-text">EBENEZER <span>SOUNDS</span></span>
+      </div>
+      <p class="footer-tagline">Powering Every Event. Amplifying Every Moment.</p>
+      <div class="footer-social" style="margin-top:24px;">
+        <a href="https://www.instagram.com/ebenezer_sounds?igsi=enNxdnd3Z2c4emt4&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/></svg></a>
+        <a href="https://wa.me/916300018441" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2z" stroke="currentColor" stroke-width="1.4"/></svg></a>
+        <a href="tel:6300018441" aria-label="Phone"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.9.6 2.8a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.8.6a2 2 0 011.8 2z" stroke="currentColor" stroke-width="1.4"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#foh">FOH Engineering</a>
+      </div>
+      <div class="footer-col">
+        <h5>More</h5>
+        <a href="#equipment">Equipment</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>©️ 2026 Ebenezer Sounds. All Rights Reserved.</p>
+    <p>FOH Engineering · Live Sound · PA Systems · Event Audio · Line Array Systems</p>
+  </div>
+</footer>
+
+
+<script>
+(() => {
+  'use strict';
+
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+  // ===== NAV SCROLL STATE =====
+  const header = $('#siteHeader');
+
+  const updateHeader = () => {
+    if (header) header.classList.toggle('scrolled', window.scrollY > 40);
+  };
+
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+
+  // ===== MOBILE MENU =====
+  const hamburger = $('#hamburger');
+  const mobileMenu = $('#mobileMenu');
+
+  const setMenu = (open) => {
+    if (!mobileMenu || !hamburger) return;
+    mobileMenu.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('menu-open', open);
+  };
+
+  if (hamburger && mobileMenu) {
+    hamburger.setAttribute('aria-expanded', 'false');
+
+    hamburger.addEventListener('click', () => {
+      setMenu(!mobileMenu.classList.contains('open'));
+    });
+
+    hamburger.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setMenu(!mobileMenu.classList.contains('open'));
+      }
+    });
+
+    $$('.mobile-menu a', mobileMenu).forEach((link) => {
+      link.addEventListener('click', () => setMenu(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMenu(false);
+    });
+  }
+
+  // Prevent background page scrolling while the mobile menu is open.
+  const menuStyle = document.createElement('style');
+  menuStyle.textContent = `
+    body.menu-open { overflow: hidden; }
+    @media (min-width: 901px) {
+      body.menu-open { overflow: auto; }
+    }
+  `;
+  document.head.appendChild(menuStyle);
+
+  // ===== DIGITAL CONSOLE GENERATION =====
+  const consoleWrap = $('#consoleWrap');
+
+  if (consoleWrap) {
+    const labels = ['KICK','SNARE','OH L','OH R','BASS','GTR1','GTR2','KEYS','VOX1','VOX2','AUX1','AUX2','SUB','MST L','MST R'];
+    const ledClasses = ['g','g','g','gold','gold','r'];
+
+    labels.forEach((labelText) => {
+      const channel = document.createElement('div');
+      channel.className = 'channel';
+
+      const label = document.createElement('span');
+      label.className = 'strip-label';
+      label.textContent = labelText;
+      channel.appendChild(label);
+
+      const meter = document.createElement('div');
+      meter.className = 'meter';
+
+      for (let m = 0; m < 6; m += 1) {
+        const led = document.createElement('span');
+        led.className = `led ${ledClasses[m]}`;
+        led.style.animationDuration = `${(0.8 + Math.random() * 1.6).toFixed(2)}s`;
+        led.style.animationDelay = `${(Math.random() * 2).toFixed(2)}s`;
+        meter.appendChild(led);
+      }
+
+      channel.appendChild(meter);
+
+      const track = document.createElement('div');
+      track.className = 'fader-track';
+
+      const thumb = document.createElement('div');
+      thumb.className = 'fader-thumb';
+      thumb.style.animationDuration = `${(4 + Math.random() * 5).toFixed(2)}s`;
+      thumb.style.animationDelay = `${(-Math.random() * 8).toFixed(2)}s`;
+
+      track.appendChild(thumb);
+      channel.appendChild(track);
+      consoleWrap.appendChild(channel);
+    });
+  }
+
+  // ===== SCROLL REVEAL =====
+  const revealEls = $$('.reveal');
+
+  const revealElement = (element) => element.classList.add('in');
+
+  let revealObserver = null;
+
+  if ('IntersectionObserver' in window) {
+    revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          revealElement(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach((element) => revealObserver.observe(element));
+  } else {
+    revealEls.forEach(revealElement);
+  }
+
+  // ===== ANIMATED COUNTERS =====
+  const counters = $$('.counter .num');
+
+  if ('IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const element = entry.target;
+        const target = Number.parseInt(element.dataset.count || '0', 10);
+        const suffix = element.dataset.suffix || '';
+
+        if (!Number.isFinite(target) || target <= 0) {
+          element.textContent = `0${suffix}`;
+          observer.unobserve(element);
+          return;
+        }
+
+        const duration = 900;
+        const startTime = performance.now();
+
+        const animate = (now) => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.floor(eased * target);
+
+          element.textContent = `${value}${suffix}`;
+
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          } else {
+            element.textContent = `${target}${suffix}`;
+          }
+        };
+
+        requestAnimationFrame(animate);
+        observer.unobserve(element);
+      });
+    }, { threshold: 0.4 });
+
+    counters.forEach((counter) => counterObserver.observe(counter));
+  } else {
+    counters.forEach((element) => {
+      element.textContent = `${element.dataset.count || 0}${element.dataset.suffix || ''}`;
+    });
+  }
+
+  // ===== TIMELINE FILL =====
+  const timeline = $('#timeline');
+  const timelineFill = $('#timelineFill');
+  const timelineStages = $$('.tl-stage', timeline || document);
+
+  const animateTimeline = () => {
+    if (!timelineFill) return;
+    timelineFill.classList.add('in');
+
+    timelineStages.forEach((stage, index) => {
+      window.setTimeout(() => stage.classList.add('in'), index * 220);
+    });
+  };
+
+  if (timeline) {
+    if ('IntersectionObserver' in window) {
+      const timelineObserver = new IntersectionObserver((entries, observer) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          animateTimeline();
+          observer.disconnect();
+        }
+      }, { threshold: 0.25 });
+
+      timelineObserver.observe(timeline);
+    } else {
+      animateTimeline();
+    }
+  }
+
+  // ===== GALLERY =====
+  const galleryData = [
+    { cat: 'Live Events', name: 'Main Stage Mix', gradient: 'linear-gradient(150deg,#241c14,#0a0a0c 70%)', icon: 'wave' },
+    { cat: 'FOH Engineering', name: 'Front of House', gradient: 'linear-gradient(150deg,#1c1a24,#0a0a0c 70%)', icon: 'console' },
+    { cat: 'Sound Systems', name: 'PA Deployment', gradient: 'linear-gradient(150deg,#241a1c,#0a0a0c 70%)', icon: 'speaker' },
+    { cat: 'Line Array', name: 'Flown Array Rig', gradient: 'linear-gradient(150deg,#1a2024,#0a0a0c 70%)', icon: 'array' },
+    { cat: 'Stage Setup', name: 'Show Ready', gradient: 'linear-gradient(150deg,#201c14,#0a0a0c 70%)', icon: 'truss' },
+    { cat: 'Equipment', name: 'Signal Chain', gradient: 'linear-gradient(150deg,#1c1c1c,#0a0a0c 70%)', icon: 'mic' }
+  ];
+
+  const icons = {
+    wave: '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M2 20 Q10 5 15 20 T28 20 T38 20" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>',
+    console: '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="4" y="16" width="32" height="16" stroke="currentColor" stroke-width="1.3"/><line x1="12" y1="16" x2="12" y2="32" stroke="currentColor" stroke-width="1"/><line x1="20" y1="16" x2="20" y2="32" stroke="currentColor" stroke-width="1"/><line x1="28" y1="16" x2="28" y2="32" stroke="currentColor" stroke-width="1"/></svg>',
+    speaker: '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="10" y="4" width="20" height="32" rx="2" stroke="currentColor" stroke-width="1.3"/><circle cx="20" cy="14" r="4" stroke="currentColor" stroke-width="1.2"/><circle cx="20" cy="27" r="6" stroke="currentColor" stroke-width="1.2"/></svg>',
+    array: '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="14" y="2" width="12" height="6" stroke="currentColor" stroke-width="1.1"/><rect x="13" y="10" width="14" height="6" stroke="currentColor" stroke-width="1.1"/><rect x="12" y="18" width="16" height="6" stroke="currentColor" stroke-width="1.1"/><rect x="11" y="26" width="18" height="6" stroke="currentColor" stroke-width="1.1"/></svg>',
+    truss: '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><line x1="4" y1="36" x2="36" y2="4" stroke="currentColor" stroke-width="1.2"/><line x1="4" y1="4" x2="36" y2="36" stroke="currentColor" stroke-width="1.2"/><rect x="4" y="4" width="32" height="32" stroke="currentColor" stroke-width="1.2"/></svg>',
+    mic: '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="16" y="4" width="8" height="16" rx="4" stroke="currentColor" stroke-width="1.3"/><path d="M11 17a9 9 0 0018 0" stroke="currentColor" stroke-width="1.2" fill="none"/><line x1="20" y1="26" x2="20" y2="34" stroke="currentColor" stroke-width="1.2"/><line x1="13" y1="34" x2="27" y2="34" stroke="currentColor" stroke-width="1.2"/></svg>'
+  };
+
+  const galleryGrid = $('#galleryGrid');
+  const lightbox = $('#lightbox');
+  const lightboxInner = $('#lightboxInner');
+  const lightboxClose = $('#lightboxClose');
+
+  const closeLightbox = () => {
+    if (!lightbox) return;
+    lightbox.classList.remove('open');
+    document.body.classList.remove('lightbox-open');
+  };
+
+  const openLightbox = (item) => {
+    if (!lightbox || !lightboxInner) return;
+
+    lightboxInner.innerHTML = `
+      <div style="position:absolute;inset:0;background:${item.gradient};"></div>
+      <div class="gallery-icon" style="opacity:0.5;">${icons[item.icon]}</div>
+      <div class="gallery-caption">
+        <span class="cat">${item.cat}</span>
+        <div class="name" style="font-size:24px;">${item.name}</div>
+      </div>
+    `;
+
+    lightbox.classList.add('open');
+    document.body.classList.add('lightbox-open');
+
+    if (lightboxClose) lightboxClose.focus();
+  };
+
+  if (galleryGrid) {
+    galleryData.forEach((item, index) => {
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = `gallery-item reveal reveal-delay-${(index % 3) + 1}`;
+      card.setAttribute('aria-label', `Open ${item.name} gallery item`);
+
+      card.innerHTML = `
+        <div class="bg" style="position:absolute;inset:0;background:${item.gradient};"></div>
+        <div class="gallery-icon">${icons[item.icon]}</div>
+        <div class="gallery-caption">
+          <span class="cat">${item.cat}</span>
+          <div class="name">${item.name}</div>
+        </div>
+      `;
+
+      card.addEventListener('click', () => openLightbox(item));
+      galleryGrid.appendChild(card);
+
+      // Observe dynamically-created gallery cards too.
+      if (revealObserver) {
+        revealObserver.observe(card);
+      } else {
+        card.classList.add('in');
+      }
+    });
+  }
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+
+  if (lightbox) {
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeLightbox();
+  });
+
+  const lightboxStyle = document.createElement('style');
+  lightboxStyle.textContent = `
+    body.lightbox-open { overflow: hidden; }
+    .gallery-item {
+      appearance: none;
+      width: 100%;
+      padding: 0;
+      text-align: left;
+      color: inherit;
+      font: inherit;
+      background: none;
+    }
+  `;
+  document.head.appendChild(lightboxStyle);
+
+  // ===== ENQUIRY FORM -> WHATSAPP =====
+  const form = $('#enquiryForm');
+
+  if (form) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const name = $('#f-name')?.value.trim() || '';
+      const mobile = $('#f-mobile')?.value.trim() || '';
+      const type = $('#f-type')?.value || '';
+      const date = $('#f-date')?.value || '';
+      const location = $('#f-location')?.value.trim() || '';
+      const message = $('#f-msg')?.value.trim() || '';
+
+      // Basic client-side validation.
+      if (!name || !mobile) {
+        form.reportValidity();
+        return;
+      }
+
+      const lines = [
+        "Hi Ebenezer Sounds, I'd like to enquire about sound for an event.",
+        `Name: ${name}`,
+        `Mobile: ${mobile}`,
+        `Event Type: ${type}`
+      ];
+
+      if (date) lines.push(`Event Date: ${date}`);
+      if (location) lines.push(`Location: ${location}`);
+      if (message) lines.push(`Message: ${message}`);
+
+      const whatsappUrl =
+        `https://wa.me/916300018441?text=${encodeURIComponent(lines.join('\n'))}`;
+
+      // Use the same tab on mobile when possible; browsers may block popups
+      // opened asynchronously from complex handlers.
+      window.location.href = whatsappUrl;
+    });
+  }
+
+  // ===== CLOSE MOBILE MENU WHEN RESIZING TO DESKTOP =====
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) setMenu(false);
+  }, { passive: true });
+
+})();
+</script>
+
+</body>
+</html>
